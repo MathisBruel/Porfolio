@@ -136,7 +136,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs font-mono text-gray-500">COORDINATES</p>
-                                    <p className="text-white font-mono text-sm">35135, Chantepie (Mobilité 35)</p>
+                                    <p className="text-white font-mono text-sm">35000, Rennes (Mobilité 35)</p>
                                 </div>
                             </div>
                         </div>
@@ -263,13 +263,6 @@ export default function Contact() {
                     </motion.div>
                 </div>
 
-                {/* Footer */}
-                <div className="mt-20 pt-8 border-t border-white/5 text-center text-gray-600 text-xs font-mono">
-                    <p>© {new Date().getFullYear()} Mathis Bruel. SYSTEM_SECURE.</p>
-                    <p className="mt-2">
-                        Conçu avec <span className="text-neon-cyan">Next.js</span>, <span className="text-neon-purple">TailwindCSS</span> & <span className="text-neon-green">Framer Motion</span>.
-                    </p>
-                </div>
             </div>
         </section>
     );

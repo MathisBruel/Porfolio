@@ -36,7 +36,7 @@ const Typewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
         return () => clearTimeout(timeout);
     }, [text, delay]);
 
-    return <span>{displayedText}<span className="animate-pulse">_</span></span>;
+    return <span>{displayedText}<span className="animate-blink">_</span></span>;
 };
 
 export default function Hero() {
@@ -56,10 +56,7 @@ export default function Hero() {
                     <div className="space-y-8">
                         {/* System Status */}
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="flex items-center gap-4 text-xs font-mono text-gray-500"
+                            className="flex flex-wrap items-center gap-4 text-xs font-mono text-gray-500"
                         >
                             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                                 <span className="relative flex h-2 w-2">
@@ -84,8 +81,12 @@ export default function Hero() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
                             >
-                                <h2 className="text-neon-cyan font-mono text-sm tracking-widest mb-2">
-                                    <Typewriter text="> INITIALISATION DU PROFIL UTILISATEUR..." />
+                                <h2 className="text-neon-purple font-mono text-sm tracking-widest mb-2 flex items-center gap-3">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-purple opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-purple"></span>
+                                    </span>
+                                    <Typewriter text="> STATUS: RECHERCHE D'ALTERNANCE (DEV/DEVOPS)" />
                                 </h2>
                                 <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-2">
                                     MATHIS <br />
@@ -134,12 +135,12 @@ export default function Hero() {
                             transition={{ delay: 0.9 }}
                             className="flex flex-wrap gap-4 pt-4"
                         >
-                            <Link
-                                href="#projects"
-                                className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan font-mono rounded-sm hover:bg-neon-cyan/20 hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-all"
+                            <button
+                                onClick={() => window.lenis?.scrollTo("#projects")}
+                                className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan font-mono rounded-sm hover:bg-neon-cyan/20 hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-all cursor-pointer"
                             >
                                 ./VOIR_PROJETS
-                            </Link>
+                            </button>
                             <div className="flex items-center gap-4 px-6">
                                 <Link href="https://github.com/MathisBr" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
                                     <Github size={24} />

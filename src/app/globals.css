@@ -2,7 +2,7 @@
 
 :root {
   /* Base Colors */
-  --background: #050505;
+  --background: #050505b9;
   --foreground: #e0e0e0;
 
   /* Tech Colors */
@@ -33,6 +33,7 @@
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
   --animate-scanline: scanline 8s linear infinite;
   --animate-glitch: glitch 1s linear infinite alternate-reverse;
+  --animate-blink: blink 1s step-end infinite;
 }
 
 body {
@@ -143,6 +144,18 @@ body {
   100% {
     clip-path: inset(30% 0 30% 0);
     transform: translate(1px, -1px);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
   }
 }
 
