@@ -40,6 +40,11 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                // @ts-ignore
+                                window.lenis?.scrollTo(link.href);
+                            }}
                             className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
                         >
                             {link.name}
@@ -70,7 +75,12 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className="text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setIsMobileMenuOpen(false);
+                                        // @ts-ignore
+                                        window.lenis?.scrollTo(link.href);
+                                    }}
                                 >
                                     {link.name}
                                 </Link>

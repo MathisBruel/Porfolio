@@ -1,38 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Briefcase, GraduationCap } from "lucide-react";
+import { Calendar, Briefcase, GraduationCap, Terminal } from "lucide-react";
 
 const experiences = [
     {
-        year: "2025",
-        title: "Co-Fondateur & Président",
+        year: "Depuis 2025",
+        title: "Co-fondateur & PDG",
         company: "Deva2",
-        description: "Société de services numériques : DevOps, infra Linux, déploiement serveurs.",
+        description: "Société de services numériques : DevOps, infrastructure Linux, déploiement de serveurs.",
         icon: Briefcase,
-        color: "text-blue-400",
+        color: "text-neon-cyan",
     },
     {
-        year: "2025",
+        year: "Été 2025",
         title: "Développeur",
         company: "CGR Cinémas",
-        description: "Conception d'outils d'administration pour les salles ICE à l'international.",
+        description: "Conception d'outils d'administration pour les salles de cinéma ICE à l'international.",
         icon: Briefcase,
-        color: "text-purple-400",
+        color: "text-neon-purple",
     },
     {
         year: "2024 - 2029",
-        title: "Master Informatique",
+        title: "Master en Informatique",
         company: "Ecole Sup De Vinci Rennes",
         description: "Formation d'expert en développement et architecture logicielle.",
         icon: GraduationCap,
-        color: "text-green-400",
+        color: "text-neon-green",
     },
     {
         year: "Depuis 2024",
-        title: "Directeur Développement",
+        title: "Responsable développement",
         company: "Endorah",
-        description: "Coordination technique et développement de services pour agence de communication.",
+        description: "Coordination technique et développement de projets de clients autour de Minecraft.",
         icon: Briefcase,
         color: "text-yellow-400",
     },
@@ -40,8 +40,13 @@ const experiences = [
 
 export default function About() {
     return (
-        <section id="about" className="py-20 bg-zinc-900/50">
-            <div className="container mx-auto px-6">
+        <section id="about" className="py-20 bg-background relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-purple/15 rounded-full blur-[140px]" />
+            {/* Background Elements */}
+            <div className="absolute left-0 top-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -49,50 +54,56 @@ export default function About() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Mon Parcours</h2>
-                    <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full" />
-                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
-                        De l'étudiant passionné à l'entrepreneur, voici les étapes clés qui ont façonné mon expertise.
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
+                        <Terminal size={14} className="text-neon-cyan" />
+                        <span className="text-xs font-mono text-neon-cyan">/var/log/history</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">JOURNAL D'EXÉCUTION</h2>
+                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto font-mono text-sm">
+                        &gt; Traçage du parcours d'étudiant à entrepreneur...
                     </p>
                 </motion.div>
 
                 <div className="max-w-4xl mx-auto">
-                    {experiences.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="relative pl-8 md:pl-0 mb-12 last:mb-0 group"
-                        >
-                            {/* Timeline Line */}
-                            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-800 -ml-px md:mx-auto hidden md:block" />
+                    <div className="relative border-l border-white/10 ml-4 md:ml-0 space-y-12">
+                        {experiences.map((exp, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="relative pl-8 md:pl-12 group"
+                            >
+                                {/* Connector */}
+                                <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 bg-background border border-white/20 rounded-full group-hover:border-neon-cyan group-hover:bg-neon-cyan transition-colors shadow-[0_0_10px_rgba(0,0,0,0.5)] z-10" />
 
-                            <div className={`md:flex items-center justify-between ${index % 2 === 0 ? "flex-row-reverse" : ""}`}>
-                                {/* Empty space for timeline alignment */}
-                                <div className="hidden md:block w-5/12" />
+                                <div className="glass-panel p-6 rounded-lg border border-white/5 hover:border-neon-cyan/30 transition-colors relative overflow-hidden group-hover:shadow-[0_0_30px_rgba(0,243,255,0.05)]">
+                                    {/* Hover Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                                {/* Center Icon */}
-                                <div className="absolute left-0 md:left-1/2 w-8 h-8 -ml-4 rounded-full bg-zinc-900 border-2 border-blue-500/30 flex items-center justify-center z-10 group-hover:border-blue-500 transition-colors">
-                                    <exp.icon size={14} className={exp.color} />
-                                </div>
-
-                                {/* Content Card */}
-                                <div className="md:w-5/12 bg-zinc-900/80 border border-white/5 p-6 rounded-xl hover:bg-zinc-800/80 transition-colors">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className={`text-sm font-mono ${exp.color}`}>{exp.year}</span>
-                                        <span className="text-gray-600 text-xs">•</span>
-                                        <span className="text-gray-400 text-sm">{exp.company}</span>
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 relative z-10">
+                                        <div className="flex items-center gap-3">
+                                            <div className={`p-2 rounded bg-white/5 ${exp.color}`}>
+                                                <exp.icon size={18} />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-bold text-white group-hover:text-neon-cyan transition-colors">{exp.title}</h3>
+                                                <div className="text-sm text-gray-400 font-mono">{exp.company}</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded border border-white/5">
+                                            [{exp.year}]
+                                        </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">{exp.title}</h3>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
+
+                                    <p className="text-gray-400 text-sm leading-relaxed relative z-10 border-l-2 border-white/5 pl-4">
                                         {exp.description}
                                     </p>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

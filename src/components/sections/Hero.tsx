@@ -2,115 +2,198 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Terminal, Cpu, Shield, Activity, Wifi } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const GlitchText = ({ text }: { text: string }) => {
+    return (
+        <span className="relative inline-block group">
+            <span className="relative z-10">{text}</span>
+            <span className="absolute top-0 left-0 -z-10 w-full h-full text-neon-cyan opacity-0 group-hover:opacity-100 animate-glitch">
+                {text}
+            </span>
+            <span className="absolute top-0 left-0 -z-10 w-full h-full text-neon-purple opacity-0 group-hover:opacity-100 animate-glitch [animation-delay:0.1s]">
+                {text}
+            </span>
+        </span>
+    );
+};
+
+const Typewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            let i = 0;
+            const interval = setInterval(() => {
+                setDisplayedText(text.substring(0, i + 1));
+                i++;
+                if (i > text.length) clearInterval(interval);
+            }, 50);
+            return () => clearInterval(interval);
+        }, delay);
+        return () => clearTimeout(timeout);
+    }, [text, delay]);
+
+    return <span>{displayedText}<span className="animate-pulse">_</span></span>;
+};
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black z-0" />
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
 
-            <div className="container mx-auto px-6 z-10 grid md:grid-cols-2 gap-12 items-center">
-                {/* Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-center md:text-left"
-                >
-                    <div className="inline-block px-3 py-1 mb-4 border border-blue-500/30 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium">
-                        Disponible pour alternance
-                    </div>
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-                        Mathis <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Bruel</span>
-                    </h1>
-                    <h2 className="text-2xl md:text-3xl text-gray-300 mb-6 font-light">
-                        Développeur & DevOps <br className="hidden md:block" />
-                        <span className="font-semibold text-white">Entrepreneur</span>
-                    </h2>
-                    <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                        Co-fondateur de <span className="text-blue-400 font-semibold">Deva2</span>.
-                        Je conçois des architectures scalables et des solutions d'infrastructure performantes.
-                        Passionné par le DevOps, le SysAdmin et l'innovation.
-                    </p>
+            {/* Colorful gradient orbs */}
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-neon-cyan/15 rounded-full blur-[140px]" />
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <Link
-                            href="#projects"
-                            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all flex items-center justify-center gap-2 group"
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                    {/* Left Column: Command Center Interface */}
+                    <div className="space-y-8">
+                        {/* System Status */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="flex items-center gap-4 text-xs font-mono text-gray-500"
                         >
-                            Voir mes projets
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                        <Link
-                            href="#contact"
-                            className="px-8 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white rounded-full font-medium transition-all"
-                        >
-                            Me contacter
-                        </Link>
-                    </div>
+                            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                <span>SYSTÈME EN LIGNE</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Wifi size={14} className="text-neon-cyan" />
+                                <span>LATENCE: 12ms</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Activity size={14} className="text-neon-purple" />
+                                <span>CPU: OPTIMAL</span>
+                            </div>
+                        </motion.div>
 
-                    <div className="mt-12 flex items-center justify-center md:justify-start gap-6 text-gray-400">
-                        <a href="https://github.com/MathisBruel" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                            <Github size={24} />
-                        </a>
-                        <a href="https://www.linkedin.com/in/mathis-bruel" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                            <Linkedin size={24} />
-                        </a>
-                        <a href="mailto:mathis.bruel17700@gmail.com" className="hover:text-white transition-colors">
-                            <Mail size={24} />
-                        </a>
-                    </div>
-                </motion.div>
+                        <div className="space-y-2">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                            >
+                                <h2 className="text-neon-cyan font-mono text-sm tracking-widest mb-2">
+                                    <Typewriter text="> INITIALISATION DU PROFIL UTILISATEUR..." />
+                                </h2>
+                                <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-2">
+                                    MATHIS <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple text-glow">
+                                        BRUEL
+                                    </span>
+                                </h1>
+                            </motion.div>
 
-                {/* Image Content */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative flex justify-center"
-                >
-                    <div className="relative w-72 h-72 md:w-96 md:h-96">
-                        {/* Glow effect behind image */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-2xl opacity-20 animate-pulse" />
-
-                        {/* Image Container with border */}
-                        <div className="relative w-full h-full rounded-full border-4 border-white/10 overflow-hidden shadow-2xl">
-                            <Image
-                                src="/profile-v2.jpg"
-                                alt="Mathis Bruel"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="text-xl md:text-2xl text-gray-400 font-light max-w-lg border-l-2 border-neon-purple/50 pl-6"
+                            >
+                                <p>
+                                    Concevoir des systèmes <GlitchText text="robustes" /> & <br />
+                                    développer des solutions <GlitchText text="innovantes" />.
+                                </p>
+                            </motion.div>
                         </div>
 
-                        {/* Floating Badges */}
+                        {/* Tech Modules */}
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-4 -right-4 bg-black/80 backdrop-blur-md border border-white/10 p-4 rounded-xl shadow-xl"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7 }}
+                            className="grid grid-cols-2 md:grid-cols-3 gap-4"
                         >
-                            <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                                <span className="text-sm font-medium text-white">Deva2 Founder</span>
-                            </div>
+                            {[
+                                { icon: Terminal, label: "DevOps", color: "text-neon-cyan" },
+                                { icon: Cpu, label: "Fullstack", color: "text-neon-purple" },
+                                { icon: Shield, label: "Système sécurisé", color: "text-neon-green" },
+                            ].map((item, index) => (
+                                <div key={index} className="glass-panel p-4 rounded-lg flex items-center gap-3 hover:bg-white/5 transition-colors group cursor-default">
+                                    <item.icon className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-transform`} />
+                                    <span className="text-sm font-mono text-gray-300">{item.label}</span>
+                                </div>
+                            ))}
                         </motion.div>
 
+                        {/* CTAs */}
                         <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute -bottom-4 -left-4 bg-black/80 backdrop-blur-md border border-white/10 p-4 rounded-xl shadow-xl"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.9 }}
+                            className="flex flex-wrap gap-4 pt-4"
                         >
-                            <div className="text-sm font-medium text-white">
-                                <span className="text-blue-400 font-bold">5+</span> Années d'XP
+                            <Link
+                                href="#projects"
+                                className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan font-mono rounded-sm hover:bg-neon-cyan/20 hover:shadow-[0_0_15px_rgba(0,243,255,0.3)] transition-all"
+                            >
+                                ./VOIR_PROJETS
+                            </Link>
+                            <div className="flex items-center gap-4 px-6">
+                                <Link href="https://github.com/MathisBr" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+                                    <Github size={24} />
+                                </Link>
+                                <Link href="https://linkedin.com/in/mathis-bruel" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+                                    <Linkedin size={24} />
+                                </Link>
+                                <Link href="mailto:contact@mathisbruel.com" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+                                    <Mail size={24} />
+                                </Link>
                             </div>
                         </motion.div>
                     </div>
-                </motion.div>
+
+                    {/* Right Column: Holographic Visual */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                        className="relative flex justify-center lg:justify-end"
+                    >
+                        <div className="relative w-80 h-80 md:w-[500px] md:h-[500px]">
+                            {/* Rotating Rings */}
+                            <div className="absolute inset-0 border border-neon-cyan/20 rounded-full animate-spin-slow" />
+                            <div className="absolute inset-4 border border-neon-purple/20 rounded-full animate-spin-reverse-slow" />
+                            <div className="absolute inset-0 border-t border-neon-cyan/50 rounded-full animate-spin-slow opacity-50" />
+
+                            {/* Main Image Container */}
+                            <div className="absolute inset-10 bg-black rounded-full overflow-hidden border-2 border-white/10 relative group">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="/profile-final.png"
+                                    alt="Mathis Bruel"
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                />
+
+                                {/* Scanline Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-cyan/20 to-transparent h-[10%] w-full animate-scanline opacity-50 pointer-events-none" />
+
+                                {/* Glitch Overlay */}
+                                <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay" />
+                            </div>
+
+                            {/* Floating Data Points */}
+                            <div className="absolute top-0 right-10 glass-panel p-2 rounded text-xs font-mono text-neon-cyan animate-float">
+                                CIBLE: VERROUILLÉE
+                            </div>
+                            <div className="absolute bottom-10 left-0 glass-panel p-2 rounded text-xs font-mono text-neon-purple animate-float-delayed">
+                                MODE: SÉCURISÉ
+                            </div>
+                        </div>
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );
