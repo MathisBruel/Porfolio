@@ -40,11 +40,11 @@ const experiences = [
 
 export default function About() {
     return (
-        <section id="about" className="py-20 bg-background relative overflow-hidden">
+        <section id="about" className="py-20 bg-gradient-to-b from-background via-background-alt to-background relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-purple/15 rounded-full blur-[140px]" />
             {/* Background Elements */}
-            <div className="absolute left-0 top-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+            <div className="absolute left-0 top-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
@@ -65,7 +65,7 @@ export default function About() {
                 </motion.div>
 
                 <div className="max-w-4xl mx-auto">
-                    <div className="relative border-l border-white/10 ml-4 md:ml-0 space-y-12">
+                    <div className="relative border-l-2 border-white/20 ml-4 md:ml-0 space-y-12">
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}

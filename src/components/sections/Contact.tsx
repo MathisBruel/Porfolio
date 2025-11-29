@@ -112,7 +112,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs font-mono text-gray-500">EMAIL_PROTOCOL</p>
-                                    <a href="mailto:mathis.bruel17700@gmail.com" className="text-white hover:text-neon-cyan transition-colors font-mono text-sm">
+                                    <a href="mailto:mathis.bruel17700@gmail.com" className="text-white hover:text-neon-cyan transition-colors font-mono text-sm break-all">
                                         mathis.bruel17700@gmail.com
                                     </a>
                                 </div>
@@ -167,7 +167,7 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="glass-panel p-8 rounded-xl border border-white/5 relative"
+                        className="glass-panel p-6 md:p-8 rounded-xl border border-white/5 relative"
                     >
                         {/* Decorative scanline */}
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-cyan opacity-50" />

@@ -231,7 +231,7 @@ export default function Projects() {
     });
 
     return (
-        <section id="projects" className="py-20 bg-background relative overflow-hidden">
+        <section id="projects" className="py-20 bg-gradient-to-b from-background via-background-alt to-background relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[500px] h-[500px] bg-neon-purple/15 rounded-full blur-[140px]" />
             <div className="container mx-auto px-6 relative z-10">
