@@ -38,7 +38,7 @@ const skillCategories = [
         title: "Design & Outils",
         icon: PenTool,
         color: "text-pink-400",
-        skills: ["Figma", "Postman", "Canva", "Trello", "Taiga", "Jetbrains"],
+        skills: ["Figma", "Postman", "Wireshark", "Canva", "Trello", "Taiga", "Jetbrains", "Google workspace"],
     },
 ];
 
