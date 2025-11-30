@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Mail, MapPin, Phone, Send, Github, Linkedin, Radio } from "lucide-react";
+import { trackEvent } from "@/utils/plausible";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -54,6 +55,7 @@ export default function Contact() {
                 setStatus({ type: 'success', message: 'Transmission réussie. Message reçu.' });
                 setFormData({ name: "", email: "", subject: "", message: "" });
                 setCaptchaToken(null);
+                trackEvent('Contact Form Submit');
                 // @ts-ignore
                 window.grecaptcha.reset();
             } else {
@@ -112,7 +114,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs font-mono text-gray-500">EMAIL_PROTOCOL</p>
-                                    <a href="mailto:mathis.bruel17700@gmail.com" className="text-white hover:text-neon-cyan transition-colors font-mono text-sm break-all">
+                                    <a href="mailto:mathis.bruel17700@gmail.com" onClick={() => trackEvent('Contact Click', { type: 'email' })} className="text-white hover:text-neon-cyan transition-colors font-mono text-sm break-all">
                                         mathis.bruel17700@gmail.com
                                     </a>
                                 </div>
@@ -124,7 +126,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs font-mono text-gray-500">VOICE_LINK</p>
-                                    <a href="tel:0768363222" className="text-white hover:text-neon-purple transition-colors font-mono text-sm">
+                                    <a href="tel:0768363222" onClick={() => trackEvent('Contact Click', { type: 'phone' })} className="text-white hover:text-neon-purple transition-colors font-mono text-sm">
                                         07.68.36.32.22
                                     </a>
                                 </div>
@@ -146,6 +148,7 @@ export default function Contact() {
                                 href="https://github.com/MathisBruel"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('Social Click', { platform: 'github' })}
                                 className="w-12 h-12 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white hover:text-black transition-all hover:scale-110"
                             >
                                 <Github size={20} />
@@ -154,6 +157,7 @@ export default function Contact() {
                                 href="https://www.linkedin.com/in/mathis-bruel"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('Social Click', { platform: 'linkedin' })}
                                 className="w-12 h-12 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] hover:text-white transition-all hover:scale-110"
                             >
                                 <Linkedin size={20} />

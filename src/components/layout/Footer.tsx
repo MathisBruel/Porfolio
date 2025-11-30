@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp, Terminal, Cpu, Code } from "lucide-react";
+import { trackEvent } from "@/utils/plausible";
 
 export default function Footer() {
     const scrollToTop = () => {
@@ -83,6 +84,7 @@ export default function Footer() {
                                 href="https://github.com/MathisBruel"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('Social Click', { platform: 'github' })}
                                 className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white hover:text-black transition-all hover:scale-110 group"
                             >
                                 <Github size={20} />
@@ -91,12 +93,14 @@ export default function Footer() {
                                 href="https://www.linkedin.com/in/mathis-bruel"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('Social Click', { platform: 'linkedin' })}
                                 className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-[#0077b5] hover:text-white transition-all hover:scale-110 group"
                             >
                                 <Linkedin size={20} />
                             </a>
                             <a
                                 href="mailto:mathis.bruel17700@gmail.com"
+                                onClick={() => trackEvent('Social Click', { platform: 'email' })}
                                 className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 hover:bg-neon-cyan hover:text-black transition-all hover:scale-110 group"
                             >
                                 <Mail size={20} />

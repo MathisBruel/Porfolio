@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Folder, Star, Terminal, Box, Globe } from "lucide-react";
+import { trackEvent } from "@/utils/plausible";
 
 type Project = {
     title: string;
@@ -265,7 +266,10 @@ export default function Projects() {
                     {categories.map((cat) => (
                         <button
                             key={cat.key}
-                            onClick={() => setFilter(cat.key)}
+                            onClick={() => {
+                                setFilter(cat.key);
+                                trackEvent('Project Category Click', { category: cat.key });
+                            }}
                             className={`px-6 py-2 rounded-sm text-sm font-mono transition-all border ${filter === cat.key
                                 ? "bg-neon-cyan/10 border-neon-cyan text-neon-cyan shadow-[0_0_10px_rgba(0,243,255,0.2)]"
                                 : "bg-transparent border-white/10 text-gray-500 hover:border-white/30 hover:text-white"
@@ -329,6 +333,7 @@ export default function Projects() {
                                                     href={project.links.github}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
+                                                    onClick={() => trackEvent('Project Github Click', { project: project.title })}
                                                     className="flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-white transition-colors"
                                                 >
                                                     <Github size={14} /> CODE
@@ -339,6 +344,7 @@ export default function Projects() {
                                                     href={project.links.web}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
+                                                    onClick={() => trackEvent('Project Website Click', { project: project.title })}
                                                     className="flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-white transition-colors"
                                                 >
                                                     <Globe size={14} /> SITE WEB
