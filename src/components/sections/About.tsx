@@ -5,12 +5,12 @@ import { Calendar, Briefcase, GraduationCap, Terminal } from "lucide-react";
 
 const experiences = [
     {
-        year: "Depuis 2025",
-        title: "Co-fondateur & PDG",
-        company: "Deva2",
-        description: "Société de services numériques : DevOps, infrastructure Linux, déploiement de serveurs.",
-        icon: Briefcase,
-        color: "text-neon-cyan",
+        year: "2024 - 2029",
+        title: "Master en Informatique",
+        company: "Ecole Sup De Vinci Rennes",
+        description: "Formation d'expert en développement et architecture logicielle.",
+        icon: GraduationCap,
+        color: "text-neon-green",
     },
     {
         year: "Été 2025",
@@ -21,20 +21,20 @@ const experiences = [
         color: "text-neon-purple",
     },
     {
-        year: "2024 - 2029",
-        title: "Master en Informatique",
-        company: "Ecole Sup De Vinci Rennes",
-        description: "Formation d'expert en développement et architecture logicielle.",
-        icon: GraduationCap,
-        color: "text-neon-green",
-    },
-    {
         year: "Depuis 2024",
         title: "Responsable développement",
         company: "Endorah",
         description: "Coordination technique et développement de projets de clients autour de Minecraft.",
         icon: Briefcase,
         color: "text-yellow-400",
+    },
+    {
+        year: "Depuis 2025",
+        title: "Co-fondateur",
+        company: "Deva2",
+        description: "Société de services numériques : DevOps, infrastructure Linux, déploiement de serveurs.",
+        icon: Briefcase,
+        color: "text-neon-cyan",
     },
 ];
 

@@ -1,38 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Globe, Server, Database, Terminal, PenTool, Cpu } from "lucide-react";
+import { Code2, Globe, Server, Database, Terminal, PenTool, Cpu, Gamepad2, Layers } from "lucide-react";
 
 const skillCategories = [
     {
-        title: "Développement & Scripting",
+        title: "Langages",
         icon: Code2,
         color: "text-neon-cyan",
-        skills: ["Java", "Python", "C++", "C#", "C", "TypeScript", "JavaScript", "Bash", "PHP"],
+        skills: ["Java", "Python", "TypeScript", "JavaScript", "C++", "C#", "PHP", "Bash", "SQL"],
     },
     {
-        title: "DevOps & Infrastructure",
-        icon: Server,
-        color: "text-neon-purple",
-        skills: ["Docker", "Linux", "GitHub", "Git", "GitLab", "Nginx", "Apache", "Cloudflare", "OVH", "Raspberry Pi", "PiHole", "Gradle"],
-    },
-    {
-        title: "Bases de données",
-        icon: Database,
-        color: "text-neon-green",
-        skills: ["MariaDB", "MySQL", "MongoDB", "Redis", "SQLite"],
-    },
-    {
-        title: "Web & Frameworks",
+        title: "Web & App",
         icon: Globe,
         color: "text-blue-400",
-        skills: ["Next.js", "React", "Node.js", "NestJS", "Flask", "Laravel", "Jinja", "Bootstrap", "TailwindCSS", "WordPress", "Joomla"],
+        skills: ["Next.js", "React", "Node.js", "Electron", "Flask", "Bootstrap"],
     },
     {
-        title: "Outils & Création",
-        icon: PenTool,
+        title: "Game Dev & Immersif",
+        icon: Gamepad2,
+        color: "text-neon-purple",
+        skills: ["Godot Engine", "Spigot API", "Paper API", "JavaFX", "DMX"],
+    },
+    {
+        title: "DevOps & Cloud",
+        icon: Server,
+        color: "text-green-400",
+        skills: ["Docker", "Linux", "Git", "GitHub/GitLab", "Apache", "Nginx", "RabbitMQ", "PM2", "Gradle"],
+    },
+    {
+        title: "Data & IoT",
+        icon: Database,
         color: "text-yellow-400",
-        skills: ["Postman", "Figma", "Canva", "Gimp", "Trello", "Taiga"],
+        skills: ["MySQL", "MariaDB", "Redis", "MongoDB", "Arduino", "Raspberry Pi"],
+    },
+    {
+        title: "Design & Outils",
+        icon: PenTool,
+        color: "text-pink-400",
+        skills: ["Figma", "Postman", "Canva", "Trello", "Taiga", "Jetbrains"],
     },
 ];
 
