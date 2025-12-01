@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-    { name: "À propos", href: "#about" },
-    { name: "Compétences", href: "#skills" },
     { name: "Projets", href: "#projects" },
+    { name: "Compétences", href: "#skills" },
+    { name: "À propos", href: "#about" },
     { name: "Contact", href: "#contact" },
 ];
 
