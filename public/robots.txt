@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /api/
+Allow: /
+
+# Replace the URL below with your actual site URL
+Sitemap: https://mathisbruel.fr/sitemap.xml
