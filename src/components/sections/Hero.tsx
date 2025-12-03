@@ -142,7 +142,7 @@ export default function Hero() {
                                 ./VOIR_PROJETS
                             </button>
                             <div className="flex items-center gap-4 px-6">
-                                <Link href="https://github.com/MathisBr" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
+                                <Link href="https://github.com/MathisBruel" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">
                                     <Github size={24} />
                                 </Link>
                                 <Link href="https://linkedin.com/in/mathis-bruel" target="_blank" className="text-gray-400 hover:text-white hover:scale-110 transition-all">

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Sitemap généré automatiquement à partir des pages détectées dans le projet -->
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://mathisbruel.fr/</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
+
+  <!-- Si vous ajoutez des pages (ex: /projects, /blog), ajoutez-les ci-dessous. -->
 </urlset>
