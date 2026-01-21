@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json* ./
 
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci && npm cache clean --force
 
 # ============================================
 # STAGE 2: Builder
@@ -22,7 +22,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
 
 RUN npm run build
 
