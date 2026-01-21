@@ -24,8 +24,6 @@ services:
       - no-new-privileges:true
     tmpfs:
       - /tmp:mode=1777,size=64M
-    cap_drop:
-      - ALL
     networks:
       - portfolio-network
     healthcheck:
