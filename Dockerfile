@@ -35,7 +35,7 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-RUN apk add --no-cache dumb-init \
+RUN apk add --no-cache dumb-init su-exec \
     && addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 nextjs \
     && mkdir -p /app/.next/cache \
@@ -48,8 +48,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 RUN chmod -R 555 /app/public \
     && chmod -R 755 /app/.next/cache
 
-USER nextjs
-
 EXPOSE 3000
 
 ENV PORT=3000
@@ -59,4 +57,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "server.js"]
+CMD ["su-exec", "nextjs", "node", "server.js"]
