@@ -41,7 +41,7 @@ const Typewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-x-hidden bg-background pt-20 pb-20">
+        <section className="relative min-h-screen flex items-center justify-center overflow-clip bg-background pt-20 pb-20">
             {/* Background Grid */}
             <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
@@ -185,10 +185,10 @@ export default function Hero() {
                             </div>
 
                             {/* Floating Data Points */}
-                            <div className="absolute -top-4 -right-4 md:top-0 md:right-10 glass-panel p-2 rounded text-[10px] md:text-xs font-mono text-neon-cyan animate-float">
+                            <div className="absolute top-0 right-0 lg:-top-4 lg:-right-4 glass-panel p-2 rounded text-[10px] md:text-xs font-mono text-neon-cyan animate-float">
                                 CIBLE: VERROUILLÉE
                             </div>
-                            <div className="absolute -bottom-4 -left-4 md:bottom-10 md:left-0 glass-panel p-2 rounded text-[10px] md:text-xs font-mono text-neon-purple animate-float-delayed">
+                            <div className="absolute bottom-0 left-0 lg:-bottom-4 lg:-left-4 glass-panel p-2 rounded text-[10px] md:text-xs font-mono text-neon-purple animate-float-delayed">
                                 MODE: SÉCURISÉ
                             </div>
                         </div>
